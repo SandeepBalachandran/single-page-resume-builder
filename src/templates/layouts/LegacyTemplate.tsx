@@ -9,18 +9,17 @@ import { RatedPill } from 'src/templates/components/skills/RatedPills';
 import { UnratedTabs } from 'src/templates/components/skills/UnratedTabs';
 import { Exp } from 'src/templates/components/exp/Exp';
 import { EduSection } from 'src/templates/components/education/EduSection';
-import { List } from 'src/templates/components/list/List';
 import { LineSeparator } from 'src/templates/components/separator/LineSeparator';
 import { LegacyHeader } from 'src/templates/components/section-layout/LegacyHeader';
 import { SocialBar } from 'src/templates/components/social/SocialBar';
 import {
   useIntro,
-  useInfo,
   useSocial,
-  useExp,
+  useWork,
   useSkills,
   useAchievements,
   useEducation,
+  useLabels,
 } from 'src/stores/data.store';
 
 const GridContainer = styled.div`
@@ -56,61 +55,70 @@ const EmployeName = styled.div`
 
 export function LegacyTemplate() {
   const intro = useIntro((state: any) => state);
-  const info = useInfo((state: any) => state);
   const social = useSocial((state: any) => state);
   const education = useEducation((state: any) => state.education);
-  const experience = useExp((state: any) => state);
-  const [keyProjects, certificates] = useAchievements(
-    (state: any) => [state.keyProjects, state.certificates],
+  const experience = useWork((state: any) => state);
+  const [projects, awards] = useAchievements(
+    (state: any) => [state.projects, state.awards],
     shallow
   );
-  const [technical, exposure, methodology, tools] = useSkills(
-    (state: any) => [state.technical, state.exposure, state.methodology, state.tools],
+  const [languages, frameworks, libraries, databases, technologies, practices, tools] = useSkills(
+    (state: any) => [
+      state.languages,
+      state.frameworks,
+      state.libraries,
+      state.databases,
+      state.technologies,
+      state.practices,
+      state.tools,
+    ],
     shallow
   );
+
+  const labels = useLabels((state: any) => state.labels);
 
   return (
     <GridContainer>
       <GridColumn>
         <EmployeName>{intro.name}</EmployeName>
-        <Intro intro={intro} experience={experience} />
+        <Intro intro={intro} />
         <SocialBar items={social} />
 
-        <LegacyHeader Icon={getIcon(experience.title)} title={experience.title} />
+        <LegacyHeader Icon={getIcon('work')} title={labels[0]} />
         <Exp companies={experience.companies} />
         <LineSeparator />
-        <LegacyHeader Icon={getIcon(keyProjects.title)} title={keyProjects.title} />
-        <List items={keyProjects.items} />
+        <LegacyHeader Icon={getIcon('key')} title={labels[1]} />
+        <Description description={projects} />
 
         <LineSeparator />
-        <LegacyHeader Icon={getIcon(certificates.title)} title={certificates.title} />
-        <List items={certificates.items} />
+        <LegacyHeader Icon={getIcon('certificate')} title={labels[2]} />
+        <Description description={awards} />
       </GridColumn>
 
       <Divider />
 
       <GridColumn>
-        <LegacyHeader Icon={getIcon(info.aboutTitle)} title={info.aboutTitle} />
-        <Description description={info.aboutDescription} />
+        <LegacyHeader Icon={getIcon('identity')} title={labels[3]} />
+        <Description description={intro.summary} />
         <LineSeparator />
-        <LegacyHeader Icon={getIcon(info.objectiveTitle)} title={info.objectiveTitle} />
-        <Description description={info.objectiveDescription} />
+        <LegacyHeader Icon={getIcon('career')} title={labels[4]} />
+        <Description description={intro.objective} />
         <LineSeparator />
-        <LegacyHeader Icon={getIcon(technical.title)} title={technical.title} />
-        <RatedPill items={technical.items} />
+        <LegacyHeader Icon={getIcon('expert')} title={labels[5]} />
+        <RatedPill items={[...languages, ...frameworks]} />
         <LineSeparator />
-        <LegacyHeader Icon={getIcon(exposure.title)} title={exposure.title} />
-        <UnratedTabs items={exposure.items} />
+        <LegacyHeader Icon={getIcon('skill')} title={labels[6]} />
+        <UnratedTabs items={[...technologies, ...libraries, ...databases]} />
 
         <LineSeparator />
-        <LegacyHeader Icon={getIcon(methodology.title)} title={methodology.title} />
-        <UnratedTabs items={methodology.items} />
+        <LegacyHeader Icon={getIcon('branch')} title={labels[7]} />
+        <UnratedTabs items={practices} />
         <LineSeparator />
-        <LegacyHeader Icon={getIcon(tools.title)} title={tools.title} />
-        <UnratedTabs items={tools.items} />
+        <LegacyHeader Icon={getIcon('tool')} title={labels[8]} />
+        <UnratedTabs items={tools} />
         <LineSeparator />
-        <LegacyHeader Icon={getIcon(education.title)} title={education.title} />
-        <EduSection items={education.items} />
+        <LegacyHeader Icon={getIcon('education')} title={labels[9]} />
+        <EduSection education={education} />
       </GridColumn>
     </GridContainer>
   );

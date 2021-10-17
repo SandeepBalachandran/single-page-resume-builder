@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { PhotoElement } from 'src/core/widgets/PhotoElement';
+import MarkdownIt from 'markdown-it';
 
 const RoundedImage = styled.img`
   border-radius: 50%;
@@ -13,6 +14,15 @@ const RoundedImage = styled.img`
   border: 0.5px solid ${(props) => props.theme.fontColor};
 `;
 
+const MarkdownHolder = styled.div`
+  ul {
+    margin: 0;
+    padding-left: 1rem;
+  }
+`;
+
+const mdParser = new MarkdownIt(/* Markdown-it options */);
+
 export function Description({ description, photo }: any) {
   const image = photo && (
     <PhotoElement>
@@ -23,7 +33,7 @@ export function Description({ description, photo }: any) {
   return (
     <>
       {image}
-      {description}
+      <MarkdownHolder dangerouslySetInnerHTML={{ __html: mdParser.render(description) }} />
     </>
   );
 }

@@ -13,15 +13,14 @@ import { RatedBars } from 'src/templates/components/skills/RatedBars';
 import { UnratedTabs } from 'src/templates/components/skills/UnratedTabs';
 import { Exp } from 'src/templates/components/exp/Exp';
 import { EduSection } from 'src/templates/components/education/EduSection';
-import { List } from 'src/templates/components/list/List';
 import {
   useIntro,
-  useInfo,
   useSocial,
-  useExp,
+  useWork,
   useSkills,
   useAchievements,
   useEducation,
+  useLabels,
 } from 'src/stores/data.store';
 
 const ResumeContainer = styled(Flex)`
@@ -49,58 +48,91 @@ const RightSection = styled(FlexCol)`
   justify-content: space-between;
 `;
 
+const labelsIcon = [
+  'work',
+  'key',
+  'certificate',
+  'identity',
+  'career',
+  'expert',
+  'skill',
+  'branch',
+  'tool',
+  'education',
+];
+
 export function ProfessionalTemplate() {
   const intro = useIntro((state: any) => state);
-  const info = useInfo((state: any) => state);
   const social = useSocial((state: any) => state);
   const education = useEducation((state: any) => state.education);
-  const experience = useExp((state: any) => state);
-  const [keyProjects, certificates] = useAchievements(
-    (state: any) => [state.keyProjects, state.certificates],
+  const experience = useWork((state: any) => state);
+  const [projects, awards] = useAchievements(
+    (state: any) => [state.projects, state.awards],
     shallow
   );
-  const [technical, exposure, methodology, tools] = useSkills(
-    (state: any) => [state.technical, state.exposure, state.methodology, state.tools],
+  const [languages, frameworks, libraries, databases, technologies, practices, tools] = useSkills(
+    (state: any) => [
+      state.languages,
+      state.frameworks,
+      state.libraries,
+      state.databases,
+      state.technologies,
+      state.practices,
+      state.tools,
+    ],
     shallow
   );
+  const labels = useLabels((state: any) => state.labels);
 
   const leftSections = [
     {
-      title: experience.title,
+      title: labels[0],
+      icon: labelsIcon[0],
       component: <Exp companies={experience.companies} />,
       styles: { flexGrow: 1 },
     },
     {
-      title: keyProjects.title,
-      component: <List items={keyProjects.items} />,
+      title: labels[1],
+      icon: labelsIcon[1],
+      component: <Description description={projects} />,
     },
     {
-      title: certificates.title,
-      component: <List items={certificates.items} />,
+      title: labels[2],
+      icon: labelsIcon[2],
+      component: <Description description={awards} />,
     },
   ];
   const rightSections = [
     {
-      title: info.aboutTitle,
-      component: <Description photo={intro.photo} description={info.aboutDescription} />,
+      title: labels[3],
+      icon: labelsIcon[3],
+      component: <Description photo={intro.image} description={intro.summary} />,
     },
     {
-      title: info.objectiveTitle,
-      component: <Description description={info.objectiveDescription} />,
+      title: labels[4],
+      icon: labelsIcon[4],
+      component: <Description description={intro.objective} />,
     },
     {
-      title: technical.title,
-      component: <RatedBars items={technical.items} />,
+      title: labels[5],
+      icon: labelsIcon[5],
+      component: <RatedBars items={[...languages, ...frameworks]} />,
     },
-    { title: exposure.title, component: <UnratedTabs items={exposure.items} /> },
     {
-      title: methodology.title,
-      component: <UnratedTabs items={methodology.items} />,
+      title: labels[6],
+      icon: labelsIcon[6],
+      component: <UnratedTabs items={[...technologies, ...libraries, ...databases]} />,
     },
-    { title: tools.title, component: <UnratedTabs items={tools.items} /> },
     {
-      title: education.title,
-      component: <EduSection items={education.items} />,
+      title: labels[7],
+      icon: labelsIcon[7],
+      component: <UnratedTabs items={practices} />,
+    },
+    { title: labels[8], icon: labelsIcon[8], component: <UnratedTabs items={tools} /> },
+    {
+      title: labels[9],
+      icon: labelsIcon[9],
+      component: <EduSection education={education} />,
     },
   ];
 
@@ -108,22 +140,26 @@ export function ProfessionalTemplate() {
     <ResumeContainer>
       <LeftSection>
         <ModernHeaderIntro title={intro.name} icons={social}>
-          <Intro intro={intro} experience={experience} />
+          <Intro intro={intro} />
         </ModernHeaderIntro>
 
-        {leftSections.map(({ title, component, styles }) => (
-          <ModernHeader icon={getIcon(title)} title={title} styles={styles} key={title}>
-            {component}
-          </ModernHeader>
-        ))}
+        {leftSections
+          .filter(({ title }) => !!title)
+          .map(({ title, icon, component, styles }) => (
+            <ModernHeader icon={getIcon(icon)} title={title} styles={styles} key={title}>
+              {component}
+            </ModernHeader>
+          ))}
       </LeftSection>
 
       <RightSection>
-        {rightSections.map(({ title, component }) => (
-          <ModernHeader icon={getIcon(title)} title={title} key={title}>
-            {component}
-          </ModernHeader>
-        ))}
+        {rightSections
+          .filter(({ title }) => !!title)
+          .map(({ title, icon, component }) => (
+            <ModernHeader icon={getIcon(icon)} title={title} key={title}>
+              {component}
+            </ModernHeader>
+          ))}
       </RightSection>
     </ResumeContainer>
   );
