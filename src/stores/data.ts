@@ -43,9 +43,9 @@ export const skills = {
   ],
   technologies: [
     { name: 'Algorithms', rating: 3 },
-    { name: 'Data Structures', rating: 3 },
-    { name: 'SQL', rating: 3 },
     { name: 'Progressive Web Apps', rating: 3 },
+    { name: 'SQL', rating: 3 },
+    { name: 'Data Structures', rating: 3 },
   ],
   libraries: [
     { name: 'jQuery', rating: 3 },
@@ -99,13 +99,6 @@ export const work = [
   },
 ];
 
-export const achievements = {
-  projects:
-    '* Prevented millions of dollars in state sales tax undercharges by initiating tests that revealed a bug in a new release of shopping cart software.\n * Isolated previously undiscovered flaw in price checking tool resulting in more competitive pricing and a 20 percent increase in revenue.\n * Implemented automated testing tools spawning more diligent levels of regression testing, negative testing, error/bug retests and usability.\n * Prevented millions of dollars in state sales tax undercharges by initiating tests that revealed a bug in a new release of shopping cart software.\n',
-  awards:
-    "* React and redux - A complete guide 2020 from Udemy'\n * Agile and Scrum Master Certificate from Udacity\n  * Best performer award for consistently exceeding the performance\n  * Certificate of exceptional bug finder by XYZ client\n  * Recognition zero defect delivery\n  * Best performer award for consistently exceeding the performance",
-};
-
 export const education = [
   {
     institution: 'MIT, University',
@@ -128,3 +121,14 @@ export const education = [
     courses: [],
   },
 ];
+
+export const activities = {
+  involvements:
+    '* Prevented millions of dollars in state sales tax undercharges by initiating tests that revealed a bug in a new release of shopping cart software.\n * Isolated previously undiscovered flaw in price checking tool resulting in more competitive pricing and a 20 percent increase in revenue.\n * Implemented automated testing tools spawning more diligent levels of regression testing, negative testing, error/bug retests and usability.\n * Prevented millions of dollars in state sales tax undercharges by initiating tests that revealed a bug in a new release of shopping cart software.\n',
+  achievements:
+    "* React and redux - A complete guide 2020 from Udemy'\n * Agile and Scrum Master Certificate from Udacity\n  * Best performer award for consistently exceeding the performance\n  * Certificate of exceptional bug finder by XYZ client\n  * Recognition zero defect delivery\n  * Best performer award for consistently exceeding the performance",
+};
+
+export const volunteer = [];
+
+export const awards = [];

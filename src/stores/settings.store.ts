@@ -8,6 +8,7 @@ import { Template6 } from 'src/templates/layouts/Template6';
 
 import ProfessionalImg from 'src/assets/images/professional.jpg';
 import LegacyImg from 'src/assets/images/legacy.jpg';
+import FancyImg from 'src/assets/images/fancy.png';
 import NewImg from 'src/assets/images/new.png';
 
 export const templates = [
@@ -18,7 +19,7 @@ export const templates = [
   Template5,
   Template6,
 ];
-export const templatesSrc = [ProfessionalImg, LegacyImg, NewImg, NewImg, NewImg, NewImg];
+export const templatesSrc = [ProfessionalImg, LegacyImg, FancyImg, NewImg, NewImg, NewImg];
 export const templatesName = [
   'Professional',
   'legacy',
@@ -39,4 +40,18 @@ export const useItems = create((set) => ({
   isPhotoDisplayed: true,
 
   setIsPhotoDisplayed: (isPhotoDisplayed: boolean) => set({ isPhotoDisplayed }),
+}));
+
+export const useZoom = create((set) => ({
+  zoom: 0,
+
+  update: (value: number) => {
+    const zoomLevel = +value.toFixed(1);
+
+    set((state: any) => {
+      if (zoomLevel > 0.5) state.zoom = 0.5;
+      else if (zoomLevel < -0.5) state.zoom = -0.5;
+      else state.zoom = zoomLevel;
+    });
+  },
 }));
