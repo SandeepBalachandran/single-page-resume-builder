@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Input as AntInput, Slider } from 'antd';
 import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
-import { getIcon } from 'src/assets/icons';
-import { Flex } from 'src/assets/styles/styles';
+import { getIcon } from 'src/styles/icons';
+import { Flex } from 'src/styles/styles';
 
 const Wrapper = styled.div`
   display: flex;

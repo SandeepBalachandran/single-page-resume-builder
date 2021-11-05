@@ -1,5 +1,5 @@
 import React from 'react';
-import { getIcon } from 'src/assets/icons';
+import { getIcon } from 'src/styles/icons';
 import styled, { css } from 'styled-components';
 
 const SectionContainer = styled.section(({ style }: any) => [

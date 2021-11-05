@@ -7,7 +7,7 @@ import { Themes } from 'src/core/components/themes/Themes';
 import { SideMenu } from 'src/core/widgets/SideMenu';
 import { PrintSettings } from 'src/core/widgets/PrintSettings';
 import { useZoom } from 'src/stores/settings.store';
-import { getIcon } from 'src/assets/icons';
+import { getIcon } from 'src/styles/icons';
 
 const Wrapper = styled.div`
   height: 100vh;

@@ -23,17 +23,16 @@ import {
   SiBehance,
   SiCodechef,
   SiCodeforces,
-  SiDevDotTo,
+  SiDevdotto,
   SiDribbble,
   SiExpertsexchange,
   SiHackerearth,
-  SiHackerrank,
   SiHashnode,
   SiLeetcode,
   SiSquarespace,
   SiTwitter,
 } from 'react-icons/si';
-import { FaAward, FaMediumM, FaUniversity, FaWordpressSimple } from 'react-icons/fa';
+import { FaAward, FaMediumM, FaUniversity, FaWordpressSimple, FaHackerrank } from 'react-icons/fa';
 import { IoGitBranch } from 'react-icons/io5';
 import { GoVerified } from 'react-icons/go';
 import { GrDrag } from 'react-icons/gr';
@@ -44,11 +43,11 @@ const icons = new Map([
   ['location', <MdLocationOn />],
   ['github', <AiOutlineGithub />],
   ['linkedin', <AiFillLinkedin />],
-  ['hackerrank', <SiHackerrank />],
+  ['hackerrank', <FaHackerrank />],
   ['hackerearth', <SiHackerearth />],
   ['twitter', <SiTwitter />],
   ['leetcode', <SiLeetcode />],
-  ['devto', <SiDevDotTo />],
+  ['devto', <SiDevdotto />],
   ['medium', <FaMediumM />],
   ['wordpress', <FaWordpressSimple />],
   ['codechef', <SiCodechef />],

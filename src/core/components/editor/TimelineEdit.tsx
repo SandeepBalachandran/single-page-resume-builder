@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Input as AntInput, Collapse, Switch } from 'antd';
 import { MarkDownField } from 'src/core/widgets/MarkdownField';
-import { getIcon } from 'src/assets/icons';
+import { getIcon } from 'src/styles/icons';
 import { AiFillDelete } from 'react-icons/ai';
 
 import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
-import { FlexVC } from 'src/assets/styles/styles';
+import { FlexVC } from 'src/styles/styles';
 
 const { Panel } = Collapse;
 

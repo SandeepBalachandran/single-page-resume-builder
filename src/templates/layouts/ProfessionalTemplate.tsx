@@ -1,8 +1,8 @@
 import React from 'react';
 import shallow from 'zustand/shallow';
 import styled from 'styled-components';
-import { Flex, FlexCol } from 'src/assets/styles/styles';
-import { getIcon } from 'src/assets/icons';
+import { Flex, FlexCol } from 'src/styles/styles';
+import { getIcon } from 'src/styles/icons';
 import {
   ModernHeader,
   ModernHeaderIntro,
@@ -15,7 +15,6 @@ import { Exp } from 'src/templates/components/exp/Exp';
 import { EduSection } from 'src/templates/components/education/EduSection';
 import {
   useIntro,
-  useSocial,
   useWork,
   useSkills,
   useActivities,
@@ -62,8 +61,7 @@ const labelsIcon = [
 ];
 
 export function ProfessionalTemplate() {
-  const intro = useIntro((state: any) => state);
-  const social = useSocial((state: any) => state);
+  const intro = useIntro((state: any) => state.intro);
   const education = useEducation((state: any) => state.education);
   const experience = useWork((state: any) => state);
   const [involvements, achievements] = useActivities(
@@ -139,7 +137,7 @@ export function ProfessionalTemplate() {
   return (
     <ResumeContainer>
       <LeftSection>
-        <ModernHeaderIntro title={intro.name} icons={social}>
+        <ModernHeaderIntro title={intro.name} profiles={intro.profiles}>
           <Intro intro={intro} labels={labels} />
         </ModernHeaderIntro>
 

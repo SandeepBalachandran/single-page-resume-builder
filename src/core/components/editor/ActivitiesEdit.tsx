@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 // import { Input as AntInput } from 'antd';
-// import { ACHIEVEMNT_METADATA } from 'src/core/meta-data/input_metadata';
+// import { ACHIEVEMNT_METADATA } from 'core/meta-data/input_metadata';
 import { useActivities } from 'src/stores/data.store';
 import { MarkDownField } from 'src/core/widgets/MarkdownField';
 

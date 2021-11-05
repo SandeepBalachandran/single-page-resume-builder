@@ -1,8 +1,8 @@
 import React from 'react';
 import Color from 'color';
 import styled from 'styled-components';
-import { Flex, FlexCol, FlexVC } from 'src/assets/styles/styles';
-import { getIcon } from 'src/assets/icons';
+import { Flex, FlexCol, FlexVC } from 'src/styles/styles';
+import { getIcon } from 'src/styles/icons';
 
 const Role = styled.h3`
   color: ${(props) => Color(props.theme.primaryColor).alpha(0.75).toString()};

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Flex } from 'src/assets/styles/styles';
+import { Flex } from 'src/styles/styles';
 
 const Education = styled.div`
   &:not(:last-child) {

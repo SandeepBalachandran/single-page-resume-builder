@@ -2,18 +2,16 @@ import React from 'react';
 // import shallow from 'zustand/shallow';
 // import {
 //   useIntro,
-//   useSocial,
 //   useWork,
 //   useSkills,
 //   useAchievements,
 //   useEducation,
-// } from 'src/stores/data.store';
+// } from 'stores/data.store';
 
 export function Template6() {
   // Uncomment below lines to access data
 
-  // const intro = useIntro((state: any) => state);
-  // const social = useSocial((state: any) => state);
+  // const intro = useIntro((state: any) => state.intro);
   // const education = useEducation((state: any) => state.education);
   // const experience = useWork((state: any) => state);
   // const [keyProjects, certificates] = useAchievements(

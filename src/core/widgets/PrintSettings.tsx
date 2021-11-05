@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useIntro } from 'src/stores/data.store';
-import { getIcon } from 'src/assets/icons';
+import { getIcon } from 'src/styles/icons';
 
 const IconWrapper = styled.div`
   outline-color: transparent;
@@ -25,23 +25,23 @@ const IconButton = styled.button`
 `;
 
 export function PrintSettings() {
-  const intro = useIntro((state: any) => state);
+  const intro = useIntro((state: any) => state.intro);
 
   useEffect(() => {
-    window.addEventListener('beforeprint', () => {
-      window.document.title = `Resume_${intro.name}_${intro.label}_${intro.totalExp}`
+    globalThis?.addEventListener('beforeprint', () => {
+      globalThis.document.title = `Resume_${intro.name}_${intro.label}_${intro.totalExp}`
         .split(' ')
         .join('_');
     });
 
-    window.addEventListener('afterprint', () => {
-      window.document.title = 'Single Page Resume Builder';
+    globalThis?.addEventListener('afterprint', () => {
+      globalThis.document.title = 'Single Page Resume Builder';
     });
   }, [intro]);
 
   return (
     <IconWrapper>
-      <IconButton onClick={window.print}>{getIcon('download')}</IconButton>
+      <IconButton onClick={globalThis?.print}>{getIcon('download')}</IconButton>
     </IconWrapper>
   );
 }

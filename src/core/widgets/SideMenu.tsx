@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Tooltip } from 'antd';
-import { getIcon } from 'src/assets/icons';
+import { getIcon } from 'src/styles/icons';
 
 const Sider = styled.nav`
   height: 100%;

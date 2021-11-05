@@ -97,7 +97,7 @@ export function Themes() {
         </Color>
       </Item>
     ),
-    [customTheme, setType]
+    [customTheme, onCustomTheme, setType]
   );
 
   return (

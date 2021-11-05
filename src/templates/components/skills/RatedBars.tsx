@@ -1,7 +1,7 @@
 import React from 'react';
 import { Progress } from 'antd';
 import styled, { withTheme } from 'styled-components';
-import { FlexCol, FlexVC } from 'src/assets/styles/styles';
+import { FlexCol, FlexVC } from 'src/styles/styles';
 
 const RatedType = styled.div`
   width: 25ch;
